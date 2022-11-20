@@ -2,9 +2,10 @@ package com.example.demo.models;
 
 import java.sql.*;
 
-public class UserDAO {
+public class UserDAO {//патерн синглтон
     private static final UserDAO instance = new UserDAO();
-    private static String url = "jdbc:sqlite:D:\\java projects\\demo\\database.db";
+    private static String url = "jdbc:sqlite:C:\\Users\\дмитрий\\IdeaProjects\\javaee_cooking_blog\\database.db";
+    //C:\Users\дмитрий\IdeaProjects\javaee_cooking_blog\database.db
 
     private UserDAO() {
         try {
@@ -17,7 +18,7 @@ public class UserDAO {
 
     public static UserDAO getInstance() {
         return instance;
-    }
+    }//патерн синглтон
 
     //Авторизация
     public boolean login(String email, String password) {
@@ -74,7 +75,7 @@ public class UserDAO {
         return false;
     }
 
-    public User getUserById(int id) {
+    public User getUserById(int id) {//для того чтоб нам получить юзера чтобы отобразить рецепт
         try(Connection connection = DriverManager.getConnection(url)) {
             String query = "SELECT * FROM User WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(query);

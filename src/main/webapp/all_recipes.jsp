@@ -11,6 +11,16 @@
 <body>
     <c:import url="header.html"/>
 
+    <div>SEARCH</div>
+<form action="show-recipe" method="get">
+    <label for="user-prefix"> User:</label>
+    <input type="search" id="user-prefix" name="user-prefix">
+
+    <label for="recipe-prefix"> Title Recipe:</label>
+    <input type="search" id="recipe-prefix" name="recipe-prefix">
+    <input type="submit" value="send">
+</form>
+
     <c:forEach var="recipe" items="${requestScope.recipes}">
         <div class="recipe">
             <div class="title">
